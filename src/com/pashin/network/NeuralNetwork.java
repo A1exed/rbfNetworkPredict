@@ -19,10 +19,10 @@ public class NeuralNetwork implements Serializable {
 
     private boolean isTrained;
 
-    public NeuralNetwork(int numberOfParams, int numberOfHiddenNeurons, int numberOfClasses) {
-        inputLayer = new InputLayer(numberOfParams, numberOfHiddenNeurons);
-        hiddenLayer = new HiddenLayer(numberOfHiddenNeurons, numberOfClasses);
-        outputLayer = new OutputLayer(numberOfClasses);
+    public NeuralNetwork(int windowSize, int numberOfHiddenNeurons, int numberOfPrediction) {
+        inputLayer = new InputLayer(windowSize, numberOfHiddenNeurons);
+        hiddenLayer = new HiddenLayer(numberOfHiddenNeurons, numberOfPrediction);
+        outputLayer = new OutputLayer(numberOfPrediction);
         isTrained = false;
     }
 
@@ -89,7 +89,7 @@ public class NeuralNetwork implements Serializable {
             testError = testError / (outputLayer.getNumberOfNeuronsInLayer() * (testData.getData().size() - inputLayer.getNumberOfNeuronsInLayer() - outputLayer.getNumberOfNeuronsInLayer()));
 
             System.out.printf("Погрешность обучения (СКО): %f\n", trainError);
-            System.out.printf("Погрешность тестирования (ср. отн. погр.): %f\n", testError);
+            System.out.printf("Погрешность тестирования (САО): %f\n", testError);
             epoch++;
         }
         System.out.println("----------------------------");
@@ -129,7 +129,7 @@ public class NeuralNetwork implements Serializable {
         System.out.println("---------------------------------------");
 
         System.out.printf("Погрешность обучения (СКО): %f\n", trainError);
-        System.out.printf("Погрешность тестирования (ср. отн. погр.): %f\n", testError);
+        System.out.printf("Погрешность тестирования (САО): %f\n", testError);
     }
 
     public void predicate(ArrayList<Double> data, boolean isNormalized, double min, double max) {

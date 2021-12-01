@@ -15,7 +15,7 @@ public class Main {
 
         NeuralNetwork network = new NeuralNetwork(8, 8, 2);
 
-        network.train(dataset, 3000, 0.0015, 10);
+        network.train(dataset, 1000, 0.0015, 5);
 
     }
 }
