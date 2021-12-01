@@ -13,9 +13,9 @@ public class Main {
 
 //        Dataset dataset = new Dataset(new File("src/com/pashin/resources/function.data"));
 
-        NeuralNetwork network = new NeuralNetwork(8, 8, 2);
+        NeuralNetwork network = new NeuralNetwork(10, 8, 2);
 
-        network.train(dataset, 1000, 0.0015, 5);
+        network.train(dataset, 1000, 0.001, 10);
 
     }
 }
